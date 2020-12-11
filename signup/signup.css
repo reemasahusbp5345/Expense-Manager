@@ -1,0 +1,61 @@
+body{
+    background:linear-gradient( rgba(25, 102, 112), rgba(176,224,230))
+}
+#error{
+    color: red;
+    text-align: center;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+p{
+    white-space: pre-line;
+    line-height: 1.6;
+}
+form{
+    display: inline-block;
+    padding:10px;
+    margin:4% 34%;
+    background:white;
+    width: 30%;
+    border: 1px solid #888;
+}
+form>div{
+    margin:5px;
+}
+div>input {
+    width:100px;
+}
+
+input[type=text], input[type=email] ,input[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+#submit,#login{
+    background-color:rgb(25, 102, 112);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#sumbit:hover {
+    opacity: 0.8;
+}
+#minName, #minPass{
+    color: red;
+}
+#login{
+    background-color:#45a049;
+}
+
+#head{
+    color: red;
+    font-size: 35px;
+    text-align: center;
+}

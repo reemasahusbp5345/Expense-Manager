@@ -1,3 +1,4 @@
+ 
 h1{
      width: 80%;
      text-align: justify;
@@ -16,11 +17,12 @@ h1{
     padding: 10px;
 }
 #cont>div>h2{
-    color:white;
+ 
     background-color: rgb(122, 224, 238);
     height: 40px;
     line-height: 40px;
 }
+ 
 /* Style The Dropdown Button */
 .dropbtn {
     background-color: #4CAF50;
@@ -69,6 +71,7 @@ h1{
   #box-3:hover .dropbtn {
     background-color: #3e8e41;
   }
+ 
   #form, #details{
       border: 1px solid gainsboro;
       width:80%;
@@ -88,9 +91,47 @@ h1{
     text-align: center;
     border:1px solid red;
   }
-  #name{
+ #name{
     position: absolute;
     right: 40px;
     width: 10%;
     text-align: center;
+ 
+  #name, #btn {
+    margin-left: 85%;
+    right: 100px;
+    width: 10%;
+    text-align: center;
+    font-weight: bolder;
+    color: purple;
+  }
+  #name{
+    margin-bottom: 20px;
+    font: outline;
+    font-size: 25px;
+  }
+  #main{
+    background-color: rgb(122, 224, 238);
+  }
+  h1,h2{
+    color: rebeccapurple;
+  }
+
+  #heading{
+    text-align: center;
+    color: red;
+    font-size: 30px;
+  }
+  #ledger{
+    float:right;
+    display: block;
+    position: relative;
+    bottom:80px;
+    background:rgb(122, 224, 238)
+
+  }
+  a{
+    text-decoration: none;
+    color:  rebeccapurple;
+ 
   }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show data</title>
+    <link rel="stylesheet" href="ledger.css">
+
+</head>
+
+<body>
+    <div id="cont">Expense Manager</div>
+    <div id="nav">
+        <ul>
+            <li><a class="active">Home</a></li>
+            <li id="credit"><a>Credit</a></li>
+            <li id="debit"><a>Debit</a></li>
+            <li><a href="#about">About</a></li>
+            <li style="float: right;"><a href="/home/vikash/Expense_project/dashboard/dashboard.html">Back</a></li>
+        </ul>
+    </div>
+    <div id='result'>
+        <p id="name"></p>
+        <p id="email"></p>
+        <br>
+        <br>
+        <div id="tran">
+            <table id="details" border="1">
+                <thead>
+                    <th>
+                    <td>Title</td>
+                    <td>Type</td>
+                    <td>Amount</td>
+                    </th>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="ledger.js"></script>
+</body>
+
+</html>

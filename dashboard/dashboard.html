@@ -7,9 +7,17 @@
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+ 
     <div id="loginUser">
         <div id="name">vikash</div>
     </div>
+ 
+    <p id ="heading">Expense Manager</p>
+    <div id =ledger>
+        <a href="/home/vikash/Expense_project/ledger/ledger.html">Go to Ledger</a>
+    </div>
+     <div id="name"></div>
+ 
     <h1>Dashboard</h1>
     <div id='cont'>
         <div id="box-1">
@@ -21,11 +29,16 @@
             <p id="expense">Rs:</p>
         </div>
         <div id="box-3">
+ 
             <button class="dropbtn">Balance</button>
             <div class="dropdown-content">
                 <div>Credit:</div>
                 <div>Debit:</div>
             </div>
+ 
+            <h2>Total Balance</h2>
+            <p id="balance">Rs:</p>
+ 
         </div>
     </div>
     <h1>New Transaction</h1>
@@ -33,7 +46,11 @@
         <div>
         Title: <input type="text" name="title" id="title">
     </div>
+ 
     <div>
+ 
+    <div  >
+ 
           Type:
         Credit <input type="radio" name="type" id="type" value="credit">
         Debit <input type="radio" name="type" id="type" value="debit">
@@ -46,7 +63,9 @@
         </div>
     </form>
     <h1>Transaction Details</h1>
-     <table id="details">
+ 
+     <table id="details" border="1">
+ 
         <thead>
             <th>
                 <td>Title</td>
@@ -55,6 +74,7 @@
                 <td>Timestamp</td>
              </th>
         </thead>
+ 
         <tbody>
             <tr id="list-1">
                 <td>1</td>
@@ -92,6 +112,9 @@
                 <td></td>
             </tr>
         </tbody>
+ 
+      
+ 
      </table>
     <script src="dashboard.js"></script>
 </body>
