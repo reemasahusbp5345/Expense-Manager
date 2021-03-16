@@ -1,40 +1,3 @@
-function calculator(){
-    let  sum=0;
-    let diff=0;
-   function credit(c){
-      return sum=sum+c;
-   }
-   function debit(d){
-      return diff=diff+d;
-   }
-   function balance(){
-      return  sum-diff;
-   }
-   function res(){
-       return sum;
-   }
-   function res1(){
-       return diff;
-   }
-
-   return { credit, debit, balance, res, res1 }
-}
-
-var cal=calculator();
-
-function credit(amount){
-     cal.credit(amount);
-     var income=document.getElementById('income');
-     income.textContent="Rs:" + cal.res()
-}
-
-function  debit(amount){
-    cal.debit(amount);
-    var  expense=document.getElementById('expense');
-    expense.textContent="Rs:" + cal.res1()
-}
-
-
 window.addEventListener('load',function(){
     var d = JSON.parse(localStorage.getItem('loginUser'))
     var logged = document.getElementById('name');
@@ -42,9 +5,25 @@ window.addEventListener('load',function(){
     var form=document.getElementById('form');
     form.addEventListener('submit',addTransactions)
 
-    document.getElementById('btn').addEventListener('click',logOut)
+    document.getElementById("logout").addEventListener("click",logOut)
+
+    var user = JSON.parse(localStorage.getItem('loginUser'))
+    totalTransaction(user.transactions)
+    showTransactions(user.transactions)
+    // document.getElementById('btn').addEventListener('click',logOut)
     
 })
+
+const totalTransaction=(data)=>{
+    console.log("box1")
+    var income=document.getElementById('income');
+
+    income.textContent="Rs:" +  data.filter((item)=>item.type=="credit").reduce((ac,el)=>{return ac+el.amount},0)
+    var  expense=document.getElementById('expense');
+    expense.textContent="Rs:" +  data.filter((item)=>item.type=="debit").reduce((ac,el)=>{return ac+el.amount},0)
+    var  balance=document.getElementById('balance');
+    balance.textContent="Rs:" +  data.reduce((ac,el)=>{return ac+el.amount},0)
+}
 
 function logOut(){
     location.href="../login/index.html"
@@ -66,74 +45,46 @@ function addTransactions(){
     var type=form.get('type') ;
     var amount= Number(form.get('amount'))
 
-   var data= JSON.parse(localStorage.getItem('data'))
-
-   if(type=="debit"){
-       debit(amount)
-   }
-   else{
-       credit(amount)
-   }
-
-  var balance=document.getElementById('balance');
-  balance.textContent="Rs:" + cal.balance();
-    
+   var data= JSON.parse(localStorage.getItem('loginUser'))
     var transaction={title: title, type:type, amount:amount, timestamp:new Date().toUTCString()}
-    var d = JSON.parse(localStorage.getItem('loginUser'))
-     
-    var email=d['email']
-    // console.log(email)
-    for(var i=0;i<data.length;i++){
-        if(email==data[i]['email']){
-            localStorage.setItem('dash',JSON.stringify(data[i]))
-            data[i].transactions.push(transaction)
-            saveData('data',data)
-            showTransactions(data[i]['transactions'] )
-        }
-    }
-
+    console.log(transaction,data)
+    data.transactions.push(transaction)
+    localStorage.setItem('loginUser',JSON.stringify(data))
+    showTransactions(data.transactions)
+    totalTransaction(data.transactions)
     document.getElementById('title').value=""
     document.getElementById('amount').value=""
     document.getElementById('type').value=""
 }
 
-function showTransactions(details ){
-    // var details= JSON.parse(localStorage.getItem('data'))[0]['transactions']
-    // console.log(details)
+function showTransactions(details){
+    console.log(details)
+ 
     var tbody=document.getElementById('tbody');
     tbody.innerHTML=""
-    // var tbody=document.getElementById('tbody');
     
-    // tbody.innerHTML=""
-    let count=details.length-5;
-    for(let i=details.length-1;i>=count;i--) {
-        
-        var tbody=document.getElementById('tbody');
-         
+    details.reverse().filter((item,idx)=>{return idx<5}).map((item)=>{
         var tag=document.createElement('tr');
-        
         var td=document.createElement('td');
         
-
+    
         var td1=document.createElement('td');
-        td1.textContent=details[i]['title']
+        td1.textContent=item.title
         
         var td2=document.createElement('td');
-        td2.textContent=details[i]['type']
+        td2.textContent=item.type
         
         var td3=document.createElement('td');
-        td3.textContent=details[i]['amount']
-
+        td3.textContent=item.amount
+    
         var td4=document.createElement('td');
-        td4.textContent= details[i]['timestamp']
+        td4.textContent= item.timestamp
          
         tag.append(td,td1,td2,td3,td4);
-        
-        
+
         tbody.append(tag)
-    };
-    
-    
+    })
+     
 }
 
  

@@ -1,5 +1,8 @@
 body{
-    background:linear-gradient( rgba(25, 102, 112), rgba(176,224,230))
+  background-image: url("https://image.shutterstock.com/image-photo/accounting-report-spreadsheet-business-women-260nw-1056258833.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background:linear-gradient( rgba(25, 102, 112), rgba(176,224,230)); */
 }
 #cont{
     text-align: center;

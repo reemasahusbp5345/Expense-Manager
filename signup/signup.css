@@ -1,5 +1,8 @@
 body{
-    background:linear-gradient( rgba(25, 102, 112), rgba(176,224,230))
+    /* background:linear-gradient( rgba(25, 102, 112), rgba(176,224,230)) */
+    background-image: url("https://image.shutterstock.com/image-photo/accounting-report-spreadsheet-business-women-260nw-1056258833.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #error{
     color: red;
@@ -53,9 +56,13 @@ input[type=text], input[type=email] ,input[type=password]{
 #login{
     background-color:#45a049;
 }
+#login:hover,#submit:hover{
+    opacity: 0.8;
+}
 
 #head{
     color: red;
     font-size: 35px;
     text-align: center;
+    margin-bottom: -50px;
 }
