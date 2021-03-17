@@ -54,26 +54,32 @@ function creatCard(user) {
  
     var tbody = document.getElementById('tbody');
     tbody.innerHTML=""
-    for (let i = 0; i < user.length; i++) {
+    user.reverse().map((item,idx)=>{
+        var tag=document.createElement('tr');
+        var td=document.createElement('td');
+        td.setAttribute("class","typeColor")
 
+        
+        var td0=document.createElement('td');
+        td0.textContent=idx+1
 
-        var tag = document.createElement('tr');
-
-        var td = document.createElement('td');
-
-
-        var td1 = document.createElement('td');
-        td1.textContent = user[i]['title']
-
-        var td2 = document.createElement('td');
-        td2.textContent = user[i]['type']
-
-        var td3 = document.createElement('td');
-        td3.textContent = user[i]['amount']
-
-        tag.append(td, td1, td2, td3);
+        var td1=document.createElement('td');
+        td1.textContent=item.title
+        
+        var td2=document.createElement('td');
+        td2.textContent=item.type
+        
+        var td3=document.createElement('td');
+        item.type=="credit"? td3.textContent="+" + item.amount: td3.textContent="-" + item.amount
+        
+        
+        var td4=document.createElement('td');
+        td4.textContent= item.timestamp
+        
+        item.type=="credit"?td3.style.color="green":td3.style.color="red"
+        tag.append(td,td0,td1,td2,td3,td4);
 
         tbody.append(tag)
-    };
+    })
 
 }

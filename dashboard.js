@@ -5,7 +5,7 @@ window.addEventListener('load',function(){
     var form=document.getElementById('form');
     form.addEventListener('submit',addTransactions)
 
-    document.getElementById("logout").addEventListener("click",logOut)
+    // document.getElementById("logout").addEventListener("click",logOut)
 
     var user = JSON.parse(localStorage.getItem('loginUser'))
     totalTransaction(user.transactions)
@@ -17,12 +17,18 @@ window.addEventListener('load',function(){
 const totalTransaction=(data)=>{
     console.log("box1")
     var income=document.getElementById('income');
-
-    income.textContent="Rs:" +  data.filter((item)=>item.type=="credit").reduce((ac,el)=>{return ac+el.amount},0)
+    var creditAmt= data.filter((item)=>item.type=="credit").reduce((ac,el)=>{return ac+el.amount},0)
+    income.textContent="₹ " + creditAmt
+    income.style.color="green"
+    
     var  expense=document.getElementById('expense');
-    expense.textContent="Rs:" +  data.filter((item)=>item.type=="debit").reduce((ac,el)=>{return ac+el.amount},0)
+    var debitAmt=data.filter((item)=>item.type=="debit").reduce((ac,el)=>{return ac+el.amount},0)
+    expense.textContent="₹ " +   debitAmt
+    expense.style.color="red"
+
+    var bal= (creditAmt-debitAmt)
     var  balance=document.getElementById('balance');
-    balance.textContent="Rs:" +  data.reduce((ac,el)=>{return ac+el.amount},0)
+    balance.textContent="₹ " +  bal
 }
 
 function logOut(){
@@ -66,8 +72,9 @@ function showTransactions(details){
     details.reverse().filter((item,idx)=>{return idx<5}).map((item)=>{
         var tag=document.createElement('tr');
         var td=document.createElement('td');
+        td.setAttribute("class","typeColor")
+
         
-    
         var td1=document.createElement('td');
         td1.textContent=item.title
         
@@ -75,11 +82,13 @@ function showTransactions(details){
         td2.textContent=item.type
         
         var td3=document.createElement('td');
-        td3.textContent=item.amount
-    
+        item.type=="credit"? td3.textContent="+" + item.amount: td3.textContent="-" + item.amount
+        
+        
         var td4=document.createElement('td');
         td4.textContent= item.timestamp
-         
+        
+        item.type=="credit"?td3.style.color="green":td3.style.color="red"
         tag.append(td,td1,td2,td3,td4);
 
         tbody.append(tag)
