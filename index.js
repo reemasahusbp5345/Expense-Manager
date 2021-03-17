@@ -15,7 +15,7 @@ function handleLogin(event) {
     for (var i = 0; i < data.length; i++) {
         if (email == data[i]['email'] && password == data[i]['password']) {
             localStorage.setItem('loginUser',JSON.stringify(data[i]))
-            location.href="dashboard/dashboard.html"
+            location.href="dashboard.html"
             break;
         }
         else if (email == data[i]['email']) {

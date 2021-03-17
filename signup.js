@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
 })
 
 function enterLogin() {
-    location.href = "../login/index.html"
+    location.href = "index.html"
 }
 
 function handleInput() {

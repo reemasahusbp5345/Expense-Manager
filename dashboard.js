@@ -26,7 +26,7 @@ const totalTransaction=(data)=>{
 }
 
 function logOut(){
-    location.href="../login/index.html"
+    location.href="index.html"
 }
 
 function loadData(key) {
